@@ -10,8 +10,8 @@ go get -u -v github.com/iikira/lfsutil
 
 Setup environment `LFS_REPO_URL` and `LFS_AUTH`
 ```
-export LFS_REPO_URL=https://github.com/user/repo.git/info/lfs
-export LFS_AUTH=Basic dXNlcjpwYXNzd29yZA==
+export LFS_REPO_URL="https://github.com/user/repo.git/info/lfs"
+export LFS_AUTH="Basic dXNlcjpwYXNzd29yZA=="
 ```
 
 ## Get object infomation and download link

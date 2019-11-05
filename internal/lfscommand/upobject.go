@@ -21,6 +21,9 @@ type (
 func UpObject(opt *UpObjectOption) {
 	lazyInitCMD()
 	_, statErr := os.Stat(opt.PtrDir)
+	if statErr != nil {
+		fmt.Printf("%s\n", statErr)
+	}
 	for j, arg := range opt.Args {
 		r, err := LFS.GetUploadObjectsResponseByFilename(arg)
 		if err != nil {
@@ -30,6 +33,7 @@ func UpObject(opt *UpObjectOption) {
 		for k, o := range r.Objects {
 			if o.Actions == nil {
 				fmt.Printf("[%d] - [%d] [%s] action not found, mayby file already uploaded, oid: %s, size: %d\n", j, k, o.FilePath, o.OID, o.Size)
+				afterDownloadLink(j, k, o, statErr, arg, opt)
 				continue
 			}
 
@@ -65,12 +69,15 @@ func UpObject(opt *UpObjectOption) {
 
 func afterDownloadLink(j, k int, o *lfs.Object, statErr error, arg string, opt *UpObjectOption) {
 	var err error
-	if o.Actions.Download != nil {
-		fmt.Printf(", download link: %s", o.Actions.Download.Href)
-		// 有下载地址, 写入ptr
+	if o.Actions == nil || o.Actions.Upload == nil {
+		// 无上传对象, 写入ptr
 		if statErr == nil {
 			err = lfs.WritePtrSpecToFile(ParseOutName(arg, o.FilePath, opt.PtrDir)+opt.PtrSuffix, o)
 		}
+	}
+
+	if o.Actions != nil && o.Actions.Download != nil {
+		fmt.Printf(", download link: %s", o.Actions.Download.Href)
 	}
 	fmt.Println()
 	if err != nil {

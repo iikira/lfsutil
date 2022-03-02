@@ -21,7 +21,7 @@ func (ur *UploadReader) Total() int64 {
 	return ur.length
 }
 func (ur *UploadReader) SpeedPerSecond() int64 {
-	return ur.speedStat.GetSpeedsPerSecond()
+	return ur.speedStat.GetSpeeds()
 }
 func (ur *UploadReader) Elapsed() time.Duration {
 	if ur.nowTime == nil {

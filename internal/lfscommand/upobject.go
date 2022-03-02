@@ -2,7 +2,7 @@ package lfscommand
 
 import (
 	"fmt"
-	"github.com/iikira/BaiduPCS-Go/pcsutil/converter"
+	"github.com/iikira/iikira-go-utils/utils/converter"
 	"github.com/iikira/lfsutil/lfs"
 	"github.com/iikira/lfsutil/lfs/uploadreader"
 	"log"

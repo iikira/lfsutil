@@ -1,7 +1,7 @@
 package lfs
 
 import (
-	"github.com/iikira/BaiduPCS-Go/requester"
+	"github.com/iikira/iikira-go-utils/requester"
 	"net/url"
 	"time"
 )

@@ -3,8 +3,8 @@ package lfs
 import (
 	"bytes"
 	"errors"
-	"github.com/iikira/BaiduPCS-Go/pcsutil/jsonhelper"
-	"github.com/iikira/BaiduPCS-Go/requester/rio"
+	"github.com/iikira/iikira-go-utils/requester/rio"
+	"github.com/iikira/iikira-go-utils/utils/jsonhelper"
 	"github.com/iikira/lfsutil/lfs/uploadreader"
 	"io/ioutil"
 	"os"

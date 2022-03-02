@@ -2,8 +2,8 @@ package uploadreader
 
 import (
 	"errors"
-	"github.com/iikira/BaiduPCS-Go/requester/rio"
-	"github.com/iikira/BaiduPCS-Go/requester/rio/speeds"
+	"github.com/iikira/iikira-go-utils/requester/rio"
+	"github.com/iikira/iikira-go-utils/requester/rio/speeds"
 	"io"
 	"os"
 	"sync/atomic"
@@ -113,7 +113,6 @@ func (ur *UploadReader) Start() (stopChan <-chan struct{}) {
 	ticker := time.NewTicker(ur.interval)
 	nowTime := time.Now()
 	ur.nowTime = &nowTime
-	ur.speedStat.Init()
 	go func() {
 		for {
 			select {

@@ -3,7 +3,7 @@ package lfs
 import (
 	"bytes"
 	"errors"
-	"github.com/iikira/BaiduPCS-Go/pcsutil/jsonhelper"
+	"github.com/iikira/iikira-go-utils/utils/jsonhelper"
 	"io"
 	"os"
 	"path/filepath"

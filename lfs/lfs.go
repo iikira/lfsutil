@@ -51,5 +51,6 @@ func (l *LFS) makeHeader(isJSON bool) map[string]string {
 	return map[string]string{
 		"Accept":        accept,
 		"Authorization": l.auth,
+		"Content-Type":  accept + "; charset=utf-8",
 	}
 }
